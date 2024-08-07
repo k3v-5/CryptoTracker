@@ -12,7 +12,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/coin/:coinId' element={<Coin/>} />
-        {/* <Route path='/' element={<Home/>} /> */}
+        {/* <Route path='/B' element={<Home/>} /> */}
         </Routes>
     </div>
   )
