@@ -3,6 +3,7 @@ import './Navbar.css'
 import DiamondSharpIcon from '@mui/icons-material/DiamondSharp';
 import { useContext } from 'react';
 import { CoinContext } from '../../context/CoinContext';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -36,12 +37,18 @@ const Navbar = () => {
   }
   return (
     <div className='navbar'>
+      <Link to={'/'}>
    <button className="logo" ><DiamondSharpIcon fontSize="large" /></button>
+   </Link>
    <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Services</li>
-            <li>Contact</li>
+            <Link to={'/'}>
+            <li>Home</li></Link>
+            
+            <Link to={'/about'}>
+            <li>About</li></Link>
+            
+            
+            
    </ul>
         <div className="nav-right">
             <select onChange={changeCurrency}>
