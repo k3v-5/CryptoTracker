@@ -7,6 +7,23 @@ const Home = () => {
 
   const {allCoin, currency} = useContext(CoinContext);
   const [displayCoin, setDisplayCoin] = useState([]);
+  const [input, setInput] = useState('');
+
+  const inputHandler = (e) => {
+    setInput(e.target.value);
+    if(e.target.value === '') {
+      setDisplayCoin(allCoin);
+    }
+  }
+
+  const searchHandler = async (e) => {
+    e.preventDefault();
+    const filteredCoin = await allCoin.filter((coin) => {
+      return coin.name.toLowerCase().includes(input.toLowerCase())
+    })
+    setDisplayCoin(filteredCoin);
+    
+  }
 
   useEffect(() => {
     setDisplayCoin(allCoin)
@@ -16,10 +33,15 @@ const Home = () => {
   return (
     <div className='home'>
       <div className='hero'>
-        <h1>Largest<br/> Crypto Marketplace</h1>
+        <h1>Largest<br/> Crypto Tracker</h1>
         <p>Welcome to the cryptocurrency tracker</p>
-        <form>
-          <input type='text' placeholder='Search Cryptocurrency' />
+        <form onSubmit={searchHandler}>
+
+          <input onChange={inputHandler} list='coinlist' value={input} type='text' 
+          placeholder='Search Cryptocurrency' required/>
+
+          <datalist id='coinlist'>{allCoin.map((item,index)=>(<option key={index} value={item.name}/>))}</datalist>
+
           <button type='submit'>Search</button>
         </form>
 

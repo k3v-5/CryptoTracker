@@ -95,3 +95,26 @@
   color: #ff0000;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .table-layout {
+    grid-template-columns: 0.5fr 3fr 1fr 1fr;
+  }
+
+  .market-cap {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .table-layout div img {
+    wifth: 25px;
+  }
+  .table-layout {
+    font-size: 13px;
+  }
+
+  .hero form input {
+    width: 100px;
+  }
+}
